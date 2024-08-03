@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<body>
+    
+    <div class="product-container">
+        <div class="product-image">
+            <img src="{{product.image.url}}" alt="Product Image">
+        </div>
+        <div class="product-details">
+            <h1>{{product.title}}</h1>
+            <p class="price">{{product.price}}</p>
+            <p class="description">
+                {{product.description}}
+            </p>
+            <button><a href="{% url 'add_to_cart' product.id %}">Add to cart</a></button>
+            
+        </div>
+    </div>
+    
+</body>
+</html>
+
+
+{% endblock content %}

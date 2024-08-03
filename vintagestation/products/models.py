@@ -17,4 +17,5 @@ class Product(models.Model):
     delete_status = models.IntegerField(choices=DELETE_CHOICES,default=LIVE)
  
     def __str__(self):
-        return self.title
+        return self.title  
+    

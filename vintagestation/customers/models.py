@@ -8,11 +8,12 @@ class Customer(models.Model):
     DELETE_CHOICES = ((LIVE,'Live'),(DELETE,'Delete'))
     name = models.CharField(max_length=255)
     email = models.EmailField(max_length=200)
-    user = models.OneToOneField(User,on_delete=models.CASCADE,related_name='customer_profile')
+    user = models.OneToOneField(User,on_delete=models.CASCADE,)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     delete_status = models.IntegerField(choices=DELETE_CHOICES,default=LIVE)
- 
+
+     
     def __str__(self):
-        return self.title
+        return self.title  
     

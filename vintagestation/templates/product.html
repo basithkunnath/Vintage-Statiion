@@ -1,75 +1,57 @@
 {% extends 'base.html' %}
 {% load static %}
 {% load chunks %}
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Product</title>
+	<title>Document</title>
 </head>
-
 <body>
 	{% block content %}
-	<!-- Start Hero Section -->
-	<div class="hero">
-		<div class="container">
-			<div class="row justify-content-between">
-				<div class="col-lg-5">
-					<div class="intro-excerpt">
-						<h1>Shop</h1>
-					</div>
-				</div>
-				<div class="col-lg-7">
+    <section class="best-seller">
+        <h2>Products</h2>
+        <div class="filters">
+            <button>All Products</button>
+            <button>Chair</button>
+            <button>Table</button>
+            <button>Sofa</button>
+            <button>Footstool</button>
+            <button>Office</button>
+        </div>
+       
+		{% for product_chunks in products|chunks:4 %}
 
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- End Hero Section -->
+        <div class="products">
+			{% for product in product_chunks %}
 
-
-
-	<div class="untree_co-section product-section before-footer-section">
-		<div class="container">
-			{% for product_chunks in products|chunks:4 %}
-			<div class="row">
-				{% for product in product_chunks %}
-				<!-- Start Column 1 -->
-				<div class="col-12 col-md-4 col-lg-3 mb-5">
-					<a class="product-item" href="{% url 'product_details' product.id %}">
-						<img src="{{product.image.url}}" class="img-fluid product-thumbnail">
-						<h3 class="product-title">{{product.title}}</h3>
-						<strong class="product-price">{{product.price}}</strong>
-
-						<span class="icon-cross">
-							<img src="{% static '/images/cross.svg' %}" class="img-fluid">
-						</span>
-					</a>
-				</div>
-				<!-- End Column 1 -->
-
-				{% endfor %}
-			</div>
+            <div class="product">
+				<a href="{% url 'product_details' product.id %}">
+                <img src="{{ product.image.url }}" alt="Muren Armchairs">
+                <h3>{{product.title}}</h3>
+                <p>{{product.price}}</p>
+                <p>⭐⭐⭐⭐⭐</p>
+			</a>
+            </div>
 			{% endfor %}
-			
-<div class="pagination">
-	{% if products.has_previous %}
-	<a href="?page={{ products.previous_page_number }}">&laquo;</a>
-	{% endif %}
-	{% for i in products.paginator.page_range %}
-	<a href="?page={{i}}">{{i}}</a>
-	{% endfor %}
-	{% if products.has_next %}
-	<a href="?page={{ products.next_page_number }}">&raquo;</a>
-	{% endif %}
-  </div>
+        </div>
+		{% endfor %}
+    
+               
+	<div class="pagination">
+		{% if products.has_previous %}
+		<a href="?page={{ products.previous_page_number }}">&laquo;</a>
+		{% endif %}
+		{% for i in products.paginator.page_range %}
+		<a href="?page={{i}}">{{i}}</a>
+		{% endfor %}
+		{% if products.has_next %}
+		<a href="?page={{ products.next_page_number }}">&raquo;</a>
+		{% endif %}
 		</div>
-	</div>
-            
-
-	{% endblock %}
-</body>
-
+	  </section>
+	  {% endblock %}
+</body>  
 </html>

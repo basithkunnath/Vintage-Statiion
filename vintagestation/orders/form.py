@@ -1,6 +1,6 @@
 from django import forms
 from .models import OrderdItem
-from .models import BillingAddress
+from .models import BillingInformation
 
 class AddToCartForm(forms.ModelForm):
     class Meta:
@@ -8,7 +8,7 @@ class AddToCartForm(forms.ModelForm):
         fields = ['product', 'quantity']
 
 
-class BillingAddressForm(forms.ModelForm):
+class BillingInformationForm(forms.ModelForm):
     class Meta:
-        model = BillingAddress
-        fields = ['address_line_1','address_line_2','city','state','postal_code','country']
+        model = BillingInformation
+        fields = ['address', 'city', 'state', 'postal_code', 'country', 'payment_method']

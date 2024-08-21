@@ -137,3 +137,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 MEDIA_ROOT = BASE_DIR / 'uploads'
 MEDIA_URL = '/media/'
 
+
+LOGIN_REDIRECT_URL = 'home'  # Redirect to this page after successful login
+LOGOUT_REDIRECT_URL = 'login'  # Redirect to this page after logout

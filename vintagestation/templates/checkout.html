@@ -287,12 +287,10 @@
 </div>
 </div>
 
-
-<h2>Billing Information</h2>
-  <form method="post" action="{% url 'checkout' %}">
+<h2>Checkout</h2>
+<form method="post">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit" >Save Billing Information</button>
-  </form>
-
+    <button  type="submit">Submit</button>
+</form>
 {% endblock content %}

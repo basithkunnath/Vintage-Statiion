@@ -2,25 +2,41 @@
 
 {% block content %}
 
-<body>
-    
-    <div class="product-container">
-        <div class="product-image">
-            <img src="{{product.image.url}}" alt="Product Image">
+
+<main>
+    <section class="product-details">
+        <div class="product-images">
+            <img src="{{product.image.url}}" alt="Sofa" class="main-image">
+            <div class="thumbnail-images">
+                <img src="{{product.image.url}}" alt="Thumbnail 1">
+                <img src="{{product.image.url}}" alt="Thumbnail 2">
+                <img src="{{product.image.url}}" alt="Thumbnail 3">
+                
+            </div>
         </div>
-        <div class="product-details">
+        <div class="product-info">
             <h1>{{product.title}}</h1>
-            <p class="price">{{product.price}}</p>
+            <p class="price-detail">{{product.price}}</p>
+            <p class="reviews">★★★★☆ 441 reviews</p>
             <p class="description">
                 {{product.description}}
             </p>
-            <button><a href="{% url 'add_to_cart' product.id %}">Add to cart</a></button>
-            
+
+            <div class="purchase-options">
+                <button class="buy-now"><a href="{% url 'add_to_cart' product.id %}">Buy Now</a></button>
+                <button class="add-to-basket"><a href="{% url 'add_to_cart' product.id %}">Add to cart</a></button>
+            </div>
+            <div class="delivery-info">
+                <p>Dispatched in 5-7 weeks</p>
+                <p>Why the longer lead time?</p>
+                <p>Home Delivery - $10</p>
+            </div>
         </div>
-    </div>
-    
-</body>
-</html>
+    </section>
+      <!-- Related Products Section -->
+      
+</main>
+
 
 
 {% endblock content %}

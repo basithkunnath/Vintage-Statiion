@@ -3,35 +3,41 @@
 {% block content %}
 
 
-<div class="form-box" id="register-box">
-    <h2>Register</h2>
-    <form action="register" method="post">
-        <div class="form-group">
-            <label for="register-name">Name:</label>
-            <input type="text" id="register-name" name="name" required>
-        </div>
-        <div class="form-group">
-            <label for="register-email">Email:</label>
-            <input type="email" id="register-email" name="email" required>
-        </div>
-        <div class="form-group">
-            <label for="register-password">Password:</label>
-            <input type="password" id="register-password" name="password" required>
-        </div>
-        <div class="form-group">
-            <label for="register-confirm-password">Confirm Password:</label>
-            <input type="password" id="register-confirm-password" name="confirm_password" required>
-        </div>
-        <button type="submit" class="form-button">Register</button>
-        <p class="form-text">Already have an account? <a href="#" id="show-login">Login here</a></p>
-    </form>
+    <div class="signup-section" >
+
+<!-- signup.html -->
+<div class="signup-container">
+    <div class="left-side">
+        <h2>Come join us!</h2>
+        <p>We are so excited to have you here. If you haven't already, create an account to get access to exclusive offers, rewards, and discounts.</p>
+        <a href="{% url 'login' %}">Already have an account? Sign in.</a>
+    </div>
+    <div class="right-side">
+        <h2>Signup</h2>
+        <form id="SignupForm" method="post">
+            {% csrf_token %}
+            <div>
+               
+                <input  type="text" name="{{ form.username.name }}" id="{{ form.username.id_for_label }}" placeholder="Username" required>
+            </div>
+            <div>
+                
+                <input type="email" name="{{ form.email.name }}" id="{{ form.email.id_for_label }}" placeholder="Email" required>
+            </div>
+            <div>
+                
+                <input type="password" name="{{ form.password1.name }}" id="{{ form.password1.id_for_label }}" placeholder="Password" required>
+            </div>
+            <div>
+                
+                <input type="password" name="{{ form.password2.name }}" id="{{ form.password2.id_for_label }}" placeholder="Confirm Password" required>
+            </div>
+            <button type="submit">Signup</button>
+        </form>
+    </div>
 </div>
 
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Sign up</button>
-</form>
 
+</div>
 
 {% endblock content %}
